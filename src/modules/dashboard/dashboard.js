@@ -24,14 +24,18 @@ function Dashboard() {
           onClick={() => {
             dispatch({
               type: 'SHOW_INPUT',
-              data: {formIsNew: true, updateObj: initialState.inputForm, selectedIdx: null},
+              data: {
+                formIsNew: true,
+                updateObj: initialState.inputForm,
+                selectedIdx: null,
+              },
             });
           }}>
           New
         </button>
       ) : (
         <Input
-          data={state.inputForm}
+          fields={state.inputForm}
           updateForm={updateObj =>
             dispatch({type: 'UPDATE_FORM', data: {updateObj}})
           }
@@ -45,7 +49,7 @@ function Dashboard() {
             data: {formIsNew: false, updateObj: item, selectedIdx: idx},
           })
         }
-        deleteRow={(idx) => dispatch({type: 'DELETE_ROW', data: {idx}})}
+        deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />
     </div>
   );
