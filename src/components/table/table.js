@@ -2,7 +2,6 @@ import React from 'react';
 import './table.scss';
 
 function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
-  console.log(selectedIdx);
   return entries.length ? (
     <div>
       <table>

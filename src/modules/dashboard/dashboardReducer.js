@@ -8,13 +8,13 @@ export default function (state, action) {
         entries,
       };
     }
-    case 'SHOW_INPUT': {
+    case 'TOGGLE_INPUT': {
       const {formIsNew, updateObj, selectedIdx} = action.data;
       return {
         ...state,
         formIsNew,
-        showInput: true,
-        selectedIdx,
+        showInput: !state.showInput,
+        selectedIdx: selectedIdx ? selectedIdx : state.selectedIdx,
         inputForm: {
           ...updateObj,
         },
@@ -40,7 +40,6 @@ export default function (state, action) {
       temp[idx] = updatedRow;
       return {
         ...state,
-        selectedIdx: null,
         showInput: false,
         entries: temp,
       };
@@ -49,7 +48,6 @@ export default function (state, action) {
       const {newRow} = action.data;
       return {
         ...state,
-        selectedIdx: null,
         showInput: false,
         entries: [...state.entries, newRow],
       };

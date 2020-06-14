@@ -7,6 +7,7 @@ import Table from '../../components/table/table.js';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
+
   useEffect(() => {
     async function fetchData() {
       const res = await fetch('https://api.publicapis.org/entries');
@@ -15,23 +16,37 @@ function Dashboard() {
     }
     fetchData();
   }, []);
-  const {formIsNew, inputForm, selectedIdx} = state;
+  
+  const {formIsNew, inputForm, selectedIdx, entries} = state;
   return (
     <div>
-      {!state.showInput ? (
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'TOGGLE_INPUT',
+            data: {
+              formIsNew: true,
+              updateObj: initialState.inputForm,
+            },
+          });
+        }}>
+        New
+      </button>
+      {selectedIdx ? (
         <button
-          onClick={() => {
+          onClick={() =>
             dispatch({
-              type: 'SHOW_INPUT',
-              data: {
-                formIsNew: true,
-                updateObj: initialState.inputForm,
-                selectedIdx: null,
-              },
-            });
-          }}>
-          New
+              type: 'TOGGLE_INPUT',
+              data: {formIsNew: false, updateObj: entries[selectedIdx]},
+            })
+          }>
+          Edit
         </button>
+      ) : (
+        ''
+      )}
+      {!state.showInput ? (
+        <div />
       ) : (
         <Input
           formIsNew={formIsNew}
@@ -47,16 +62,18 @@ function Dashboard() {
         />
       )}
       <Table
-        entries={state.entries}
+        entries={entries}
+        selectedIdx={selectedIdx}
+        selectRow={selectedIdx =>
+          dispatch({type: 'SELECT_ROW', data: {selectedIdx}})
+        }
         editRow={(idx, item) =>
           dispatch({
-            type: 'SHOW_INPUT',
+            type: 'TOGGLE_INPUT',
             data: {formIsNew: false, updateObj: item, selectedIdx: idx},
           })
         }
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
-        selectedIdx={selectedIdx}
-        selectRow={selectedIdx => dispatch({type: 'SELECT_ROW', data: {selectedIdx}})}
       />
     </div>
   );

@@ -9,7 +9,6 @@ function Input({
   addRow,
   updateRow,
 }) {
-  console.log(fields);
   return (
     <div>
       {Object.keys(fields).map((key, idx) => (
