@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import KlarityApp from './KlarityApp';
+import KlarityApp from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
