@@ -1,7 +1,8 @@
 import React from 'react';
 import './table.scss';
 
-function Table({entries, editRow, deleteRow}) {
+function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
+  console.log(selectedIdx);
   return entries.length ? (
     <div>
       <table>
@@ -15,15 +16,15 @@ function Table({entries, editRow, deleteRow}) {
             <th>CORS</th>
             <th>Link</th>
             <th>Category</th>
-              <th>Edit</th>
-                <th>Delete</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {entries.map((row, idx) => (
             <tr key={idx}>
               <td>
-                <input type="checkbox" />
+                <input type="checkbox" checked={idx === selectedIdx} onChange={() => selectRow(idx !== selectedIdx ? idx : null)} />
               </td>
               <td>{row.API}</td>
               <td>{row.Description}</td>

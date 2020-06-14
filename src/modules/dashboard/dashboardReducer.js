@@ -30,6 +30,10 @@ export default function (state, action) {
         },
       };
     }
+    case 'SELECT_ROW': {
+      const {selectedIdx} = action.data;
+      return {...state, selectedIdx}
+    }
     case 'UPDATE_ROW': {
       const {idx, updatedRow} = action.data;
       const temp = [...state.entries];

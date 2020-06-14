@@ -55,6 +55,8 @@ function Dashboard() {
           })
         }
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
+        selectedIdx={selectedIdx}
+        selectRow={selectedIdx => dispatch({type: 'SELECT_ROW', data: {selectedIdx}})}
       />
     </div>
   );
