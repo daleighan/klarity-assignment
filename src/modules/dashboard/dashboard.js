@@ -23,7 +23,7 @@ function Dashboard() {
       <button
         onClick={() => {
           dispatch({
-            type: 'TOGGLE_INPUT',
+            type: 'SHOW_INPUT',
             data: {
               formIsNew: true,
               updateObj: initialState.inputForm,
@@ -36,7 +36,7 @@ function Dashboard() {
         <button
           onClick={() =>
             dispatch({
-              type: 'TOGGLE_INPUT',
+              type: 'SHOW_INPUT',
               data: {formIsNew: false, updateObj: entries[selectedIdx]},
             })
           }>
@@ -45,9 +45,7 @@ function Dashboard() {
       ) : (
         ''
       )}
-      {!state.showInput ? (
-        <div />
-      ) : (
+      {state.showInput && (
         <Input
           formIsNew={formIsNew}
           fields={inputForm}
@@ -63,15 +61,11 @@ function Dashboard() {
       )}
       <Table
         entries={entries}
+        initialForm={initialState.inputForm}
+        formIsNew={formIsNew}
         selectedIdx={selectedIdx}
-        selectRow={selectedIdx =>
-          dispatch({type: 'SELECT_ROW', data: {selectedIdx}})
-        }
-        editRow={(idx, item) =>
-          dispatch({
-            type: 'TOGGLE_INPUT',
-            data: {formIsNew: false, updateObj: item, selectedIdx: idx},
-          })
+        selectRow={(selectedIdx, initialForm) =>
+          dispatch({type: 'SELECT_ROW', data: {selectedIdx, initialForm}})
         }
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />

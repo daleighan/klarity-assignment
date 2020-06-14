@@ -8,12 +8,12 @@ export default function (state, action) {
         entries,
       };
     }
-    case 'TOGGLE_INPUT': {
+    case 'SHOW_INPUT': {
       const {formIsNew, updateObj, selectedIdx} = action.data;
       return {
         ...state,
         formIsNew,
-        showInput: !state.showInput,
+        showInput: true,
         selectedIdx: selectedIdx ? selectedIdx : state.selectedIdx,
         inputForm: {
           ...updateObj,
@@ -31,8 +31,22 @@ export default function (state, action) {
       };
     }
     case 'SELECT_ROW': {
-      const {selectedIdx} = action.data;
-      return {...state, selectedIdx}
+      const {selectedIdx, initialForm} = action.data;
+      const {entries} = state;
+      if (selectedIdx) {
+        return {
+          ...state,
+          selectedIdx,
+          inputForm: state.formIsNew ? state.inputForm : entries[selectedIdx],
+        };
+      }
+      return {
+        ...state,
+        selectedIdx,
+        inputForm: initialForm,
+        showInput:
+          state.showInput && !state.formIsNew ? false : state.showInput,
+      };
     }
     case 'UPDATE_ROW': {
       const {idx, updatedRow} = action.data;

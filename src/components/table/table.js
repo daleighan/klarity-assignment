@@ -1,7 +1,15 @@
 import React from 'react';
 import './table.scss';
 
-function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
+function Table({
+  entries,
+  editRow,
+  deleteRow,
+  selectedIdx,
+  selectRow,
+  initialForm,
+}) {
+  console.log(initialForm);
   return entries.length ? (
     <div>
       <table>
@@ -15,7 +23,6 @@ function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
             <th>CORS</th>
             <th>Link</th>
             <th>Category</th>
-            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -23,7 +30,13 @@ function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
           {entries.map((row, idx) => (
             <tr key={idx}>
               <td>
-                <input type="checkbox" checked={idx === selectedIdx} onChange={() => selectRow(idx !== selectedIdx ? idx : null)} />
+                <input
+                  type="checkbox"
+                  checked={idx === selectedIdx}
+                  onChange={() =>
+                    selectRow(idx !== selectedIdx ? idx : null, initialForm)
+                  }
+                />
               </td>
               <td>{row.API}</td>
               <td>{row.Description}</td>
@@ -33,7 +46,6 @@ function Table({entries, editRow, deleteRow, selectedIdx, selectRow}) {
               <td>{row.Link}</td>
               <td>{row.Category}</td>
               <td>{row.HTTPS}</td>
-              <td onClick={() => editRow(idx, row)}>click</td>
               <td onClick={() => deleteRow(idx)}>click</td>
             </tr>
           ))}
