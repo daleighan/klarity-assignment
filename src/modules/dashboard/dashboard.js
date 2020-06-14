@@ -16,8 +16,9 @@ function Dashboard() {
     }
     fetchData();
   }, []);
-  
+
   const {formIsNew, inputForm, selectedIdx, entries} = state;
+
   return (
     <div>
       <button
@@ -32,7 +33,7 @@ function Dashboard() {
         }}>
         New
       </button>
-      {selectedIdx ? (
+      {selectedIdx !== null ? (
         <button
           onClick={() =>
             dispatch({
@@ -61,11 +62,9 @@ function Dashboard() {
       )}
       <Table
         entries={entries}
-        initialForm={initialState.inputForm}
-        formIsNew={formIsNew}
         selectedIdx={selectedIdx}
-        selectRow={(selectedIdx, initialForm) =>
-          dispatch({type: 'SELECT_ROW', data: {selectedIdx, initialForm}})
+        selectRow={(selectedIdx) =>
+          dispatch({type: 'SELECT_ROW', data: {selectedIdx}})
         }
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />

@@ -14,7 +14,7 @@ export default function (state, action) {
         ...state,
         formIsNew,
         showInput: true,
-        selectedIdx: selectedIdx ? selectedIdx : state.selectedIdx,
+        selectedIdx: selectedIdx || state.selectedIdx,
         inputForm: {
           ...updateObj,
         },
@@ -31,26 +31,22 @@ export default function (state, action) {
       };
     }
     case 'SELECT_ROW': {
-      const {selectedIdx, initialForm} = action.data;
-      const {entries} = state;
-      if (selectedIdx) {
-        return {
-          ...state,
-          selectedIdx,
-          inputForm: state.formIsNew ? state.inputForm : entries[selectedIdx],
-        };
-      }
+      const {selectedIdx} = action.data;
+      const {entries, formIsNew, showInput} = state;
       return {
         ...state,
         selectedIdx,
-        inputForm: initialForm,
-        showInput:
-          state.showInput && !state.formIsNew ? false : state.showInput,
+        inputForm:
+          selectedIdx !== null && !formIsNew
+            ? entries[selectedIdx]
+            : state.inputForm,
+        showInput: selectedIdx === null && !formIsNew ? false : showInput,
       };
     }
     case 'UPDATE_ROW': {
       const {idx, updatedRow} = action.data;
-      const temp = [...state.entries];
+      const {entries} = state;
+      const temp = [...entries];
       temp[idx] = updatedRow;
       return {
         ...state,
@@ -60,15 +56,17 @@ export default function (state, action) {
     }
     case 'ADD_ROW': {
       const {newRow} = action.data;
+      const {entries} = state;
       return {
         ...state,
         showInput: false,
-        entries: [...state.entries, newRow],
+        entries: [...entries, newRow],
       };
     }
     case 'DELETE_ROW': {
       const {idx} = action.data;
-      const temp = [...state.entries];
+      const {entries} = state;
+      const temp = [...entries];
       temp.splice(idx, 1);
       return {
         ...state,

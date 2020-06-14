@@ -3,13 +3,10 @@ import './table.scss';
 
 function Table({
   entries,
-  editRow,
   deleteRow,
   selectedIdx,
   selectRow,
-  initialForm,
 }) {
-  console.log(initialForm);
   return entries.length ? (
     <div>
       <table>
@@ -34,7 +31,7 @@ function Table({
                   type="checkbox"
                   checked={idx === selectedIdx}
                   onChange={() =>
-                    selectRow(idx !== selectedIdx ? idx : null, initialForm)
+                    selectRow(idx !== selectedIdx ? idx : null)
                   }
                 />
               </td>
