@@ -23,12 +23,8 @@ function Dashboard() {
         <button
           onClick={() => {
             dispatch({
-              type: 'TOGGLE_INPUT',
-              data: {formIsNew: true},
-            });
-            dispatch({
-              type: 'UPDATE_FORM',
-              data: {updateObj: initialState.inputForm},
+              type: 'SHOW_INPUT',
+              data: {formIsNew: true, updateObj: initialState.inputForm},
             });
           }}>
           New
@@ -41,7 +37,15 @@ function Dashboard() {
           }
         />
       )}
-      <Table entries={state.entries}/>
+      <Table
+        entries={state.entries}
+        editItem={item =>
+          dispatch({
+            type: 'SHOW_INPUT',
+            data: {formIsNew: false, updateObj: item},
+          })
+        }
+      />
     </div>
   );
 }

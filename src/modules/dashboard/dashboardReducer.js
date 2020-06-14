@@ -8,12 +8,15 @@ export default function (state, action) {
         entries,
       };
     }
-    case 'TOGGLE_INPUT': {
-      const {formIsNew} = action.data;
+    case 'SHOW_INPUT': {
+      const {formIsNew, updateObj} = action.data;
       return {
         ...state,
         formIsNew,
         showInput: !state.showInput,
+        inputForm: {
+          ...updateObj,
+        }
       };
     }
     case 'UPDATE_FORM': {

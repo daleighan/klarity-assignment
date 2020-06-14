@@ -1,7 +1,7 @@
 import React from 'react';
 import './table.scss';
 
-function Table({entries}) {
+function Table({entries, editItem}) {
   return entries.length ? (
     <div>
       <table>
@@ -27,12 +27,12 @@ function Table({entries}) {
               <td>{row.API}</td>
               <td>{row.Description}</td>
               <td>{row.Auth}</td>
-              <td>{row.HTTPS}</td>
+              <td>{row.HTTPS ? 'yes' : 'no'}</td>
               <td>{row.Cors}</td>
               <td>{row.Link}</td>
               <td>{row.Category}</td>
               <td>{row.HTTPS}</td>
-              <td>click</td>
+              <td onClick={() => editItem(row)}>click</td>
             </tr>
           ))}
         </tbody>
