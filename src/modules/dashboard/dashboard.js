@@ -24,7 +24,7 @@ function Dashboard() {
           onClick={() => {
             dispatch({
               type: 'SHOW_INPUT',
-              data: {formIsNew: true, updateObj: initialState.inputForm},
+              data: {formIsNew: true, updateObj: initialState.inputForm, selectedIdx: null},
             });
           }}>
           New
@@ -39,12 +39,13 @@ function Dashboard() {
       )}
       <Table
         entries={state.entries}
-        editItem={item =>
+        editRow={(idx, item) =>
           dispatch({
             type: 'SHOW_INPUT',
-            data: {formIsNew: false, updateObj: item},
+            data: {formIsNew: false, updateObj: item, selectedIdx: idx},
           })
         }
+        deleteRow={(idx) => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />
     </div>
   );

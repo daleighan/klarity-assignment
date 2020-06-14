@@ -3,6 +3,7 @@ export default {
   entries: [],
   showInput: false,
   formIsNew: true,
+  selectedIdx: null,
   inputForm: {
     API: '',
     Description: '',

@@ -9,14 +9,15 @@ export default function (state, action) {
       };
     }
     case 'SHOW_INPUT': {
-      const {formIsNew, updateObj} = action.data;
+      const {formIsNew, updateObj, selectedIdx} = action.data;
       return {
         ...state,
         formIsNew,
-        showInput: !state.showInput,
+        showInput: true,
+        selectedIdx,
         inputForm: {
           ...updateObj,
-        }
+        },
       };
     }
     case 'UPDATE_FORM': {
@@ -51,6 +52,7 @@ export default function (state, action) {
       temp.splice(idx, 1);
       return {
         ...state,
+        entries: temp,
       };
     }
     default: {

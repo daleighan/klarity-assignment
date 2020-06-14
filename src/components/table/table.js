@@ -1,7 +1,7 @@
 import React from 'react';
 import './table.scss';
 
-function Table({entries, editItem}) {
+function Table({entries, editRow, deleteRow}) {
   return entries.length ? (
     <div>
       <table>
@@ -15,7 +15,8 @@ function Table({entries, editItem}) {
             <th>CORS</th>
             <th>Link</th>
             <th>Category</th>
-            <th>Edit</th>
+              <th>Edit</th>
+                <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +33,8 @@ function Table({entries, editItem}) {
               <td>{row.Link}</td>
               <td>{row.Category}</td>
               <td>{row.HTTPS}</td>
-              <td onClick={() => editItem(row)}>click</td>
+              <td onClick={() => editRow(idx, row)}>click</td>
+              <td onClick={() => deleteRow(idx)}>click</td>
             </tr>
           ))}
         </tbody>
