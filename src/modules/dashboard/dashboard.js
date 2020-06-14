@@ -19,7 +19,28 @@ function Dashboard() {
 
   return (
     <div>
-      <Input />
+      {!state.showInput ? (
+        <button
+          onClick={() => {
+            dispatch({
+              type: 'TOGGLE_INPUT',
+              data: {formIsNew: true},
+            });
+            dispatch({
+              type: 'UPDATE_FORM',
+              data: {updateObj: initialState.inputForm},
+            });
+          }}>
+          New
+        </button>
+      ) : (
+        <Input
+          data={state.formData}
+          updateForm={updateObj =>
+            dispatch({type: 'UPDATE_FORM', data: {updateObj}})
+          }
+        />
+      )}
       <Table />
     </div>
   );

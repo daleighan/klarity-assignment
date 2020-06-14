@@ -2,8 +2,8 @@ export default {
   loaded: false,
   entries: [],
   showInput: false,
+  formIsNew: true,
   inputForm: {
-    isUpdate: false,
     API: '',
     Description: '',
     Auth: '',

@@ -9,8 +9,10 @@ export default function (state, action) {
       };
     }
     case 'TOGGLE_INPUT': {
+      const {formIsNew} = action.data;
       return {
         ...state,
+        formIsNew,
         showInput: !state.showInput,
       };
     }
