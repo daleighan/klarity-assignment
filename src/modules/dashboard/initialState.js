@@ -9,7 +9,7 @@ export default {
     Description: '',
     Auth: '',
     HTTPS: false,
-    CORS: '',
+    Cors: '',
     Link: '',
     Category: '',
   },

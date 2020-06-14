@@ -7,16 +7,15 @@ import Table from '../../components/table/table.js';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
-  console.log('%cState:', 'color: red;', state);
   useEffect(() => {
     async function fetchData() {
       const res = await fetch('https://api.publicapis.org/entries');
       const {entries} = await res.json();
-      dispatch({type: 'ONLOAD', data: {entries}});
+      dispatch({type: 'ONLOAD', data: {entries: entries.slice(0, 10)}});
     }
     fetchData();
   }, []);
-
+  const {formIsNew, inputForm, selectedIdx} = state;
   return (
     <div>
       {!state.showInput ? (
@@ -35,9 +34,15 @@ function Dashboard() {
         </button>
       ) : (
         <Input
-          fields={state.inputForm}
+          formIsNew={formIsNew}
+          fields={inputForm}
+          selectedIdx={selectedIdx}
           updateForm={updateObj =>
             dispatch({type: 'UPDATE_FORM', data: {updateObj}})
+          }
+          addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
+          updateRow={(idx, updatedRow) =>
+            dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
           }
         />
       )}

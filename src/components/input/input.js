@@ -1,8 +1,15 @@
 import React from 'react';
 import './input.scss';
 
-function Input({fields, updateForm}) {
-  console.log('%cForm Data', 'color: green;', fields);
+function Input({
+  formIsNew,
+  selectedIdx,
+  fields,
+  updateForm,
+  addRow,
+  updateRow,
+}) {
+  console.log(fields);
   return (
     <div>
       {Object.keys(fields).map((key, idx) => (
@@ -19,13 +26,18 @@ function Input({fields, updateForm}) {
               type="checkbox"
               checked={fields[key]}
               onChange={e => {
-
                 updateForm({[key]: e.target.checked});
               }}
             />
           )}
         </div>
       ))}
+      <button
+        onClick={() =>
+          formIsNew ? addRow(fields) : updateRow(selectedIdx, fields)
+        }>
+        {formIsNew ? 'Add' : 'Update'}
+      </button>
     </div>
   );
 }

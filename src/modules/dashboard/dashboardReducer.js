@@ -36,6 +36,8 @@ export default function (state, action) {
       temp[idx] = updatedRow;
       return {
         ...state,
+        selectedIdx: null,
+        showInput: false,
         entries: temp,
       };
     }
@@ -43,6 +45,8 @@ export default function (state, action) {
       const {newRow} = action.data;
       return {
         ...state,
+        selectedIdx: null,
+        showInput: false,
         entries: [...state.entries, newRow],
       };
     }
