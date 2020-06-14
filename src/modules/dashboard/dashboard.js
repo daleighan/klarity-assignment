@@ -35,13 +35,13 @@ function Dashboard() {
         </button>
       ) : (
         <Input
-          data={state.formData}
+          data={state.inputForm}
           updateForm={updateObj =>
             dispatch({type: 'UPDATE_FORM', data: {updateObj}})
           }
         />
       )}
-      <Table />
+      <Table entries={state.entries}/>
     </div>
   );
 }
