@@ -1,5 +1,6 @@
 import React, {useReducer, useEffect} from 'react';
 import './App.scss';
+import Dashboard from './modules/dashboard/dashboard'
 
 const initialState = {
   loaded: false,
@@ -92,6 +93,7 @@ function KlarityApp() {
         assignment based on the mock design. And group it all togethet and build
         the dashboard.
       </header>
+      <Dashboard />
     </div>
   );
 }
