@@ -1,24 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
-import './App.scss';
-import Dashboard from './modules/dashboard/dashboard'
-
-const initialState = {
-  loaded: false,
-  entries: [],
-  showInput: false,
-  inputForm: {
-    isUpdate: false,
-    API: '',
-    Description: '',
-    Auth: '',
-    HTTPS: false,
-    CORS: '',
-    Link: '',
-    Category: '',
-  },
-};
-
-function reducer(state, action) {
+export default function (state, action) {
   switch (action.type) {
     case 'ONLOAD': {
       const {entries} = action.data;
@@ -32,7 +12,7 @@ function reducer(state, action) {
       return {
         ...state,
         showInput: !state.showInput,
-      }
+      };
     }
     case 'UPDATE_FORM': {
       const {updateObj} = action.data;
@@ -73,24 +53,3 @@ function reducer(state, action) {
     }
   }
 }
-
-function KlarityApp() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('https://api.publicapis.org/entries');
-      const {entries} = await res.json();
-      dispatch({type: 'ONLOAD', data: {entries}});
-    }
-    fetchData();
-  }, []);
-
-  return (
-    <div className="App">
-      <Dashboard />
-    </div>
-  );
-}
-
-export default KlarityApp;
