@@ -1,26 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
-function App() {
+function KlarityApp() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Here goes the assignment!
+        Try creating core components for the assignment based on the mock design. And group it all togethet and build the dashboard.
       </header>
     </div>
   );
 }
 
-export default App;
+export default KlarityApp;
