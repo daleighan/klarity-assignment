@@ -7,15 +7,15 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
       <table cellSpacing="0" cellPadding="0">
         <thead className="table-head">
           <tr>
-            <th />
-            <th className="align-left">API</th>
-            <th className="align-left">Description</th>
-            <th>Auth</th>
-            <th>CORS</th>
-            <th className="align-left">Link</th>
-            <th>Category</th>
-            <th>Delete</th>
-            <th>Edit</th>
+            <th className="small-cell"/>
+            <th className="med-cell">API</th>
+            <th className="large-cell">Description</th>
+            <th className="small-cell">Auth</th>
+            <th className="small-cell">CORS</th>
+            <th className="large-cell">Link</th>
+            <th className="small-cell">Category</th>
+            <th className="small-cell">Delete</th>
+            <th className="small-cell">Edit</th>
           </tr>
         </thead>
         <tbody className="table-body">
@@ -28,8 +28,8 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
                   onChange={() => selectRow(idx !== selectedIdx ? idx : null)}
                 />
               </td>
-              <td className="align-left">{row.API}</td>
-              <td className="align-left">{row.Description}</td>
+              <td className="large-cell">{row.API}</td>
+              <td className="large-cell">{row.Description}</td>
               <td>{row.Auth}</td>
               <td>
                 {typeof row.Cors !== 'boolean'
@@ -38,7 +38,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
                   ? 'yes'
                   : 'no'}
               </td>
-              <td className="align-left">
+              <td className="large-cell">
                 {row.Link}
               </td>
               <td>{row.Category}</td>

@@ -6,6 +6,7 @@
     word-wrap: break-word;
     table-layout: fixed;
     width: 100%;
+    font-size: 0.9rem;
   }
 }
 
@@ -15,7 +16,18 @@
   }
   th {
     border-bottom: 0.6px solid #696969;
-    padding: 1.5rem 0.7rem;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    text-align: left;
+  }
+  .small-cell {
+    width: 3rem;
+  }
+  .med-cell {
+    width: 5rem;
+  }
+  .large-cell {
+    width: 8rem;
   }
 }
 
@@ -24,7 +36,11 @@
     background-color: #f6f8fc;
   }
   td {
-    padding: 1.5rem 0.7rem;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    input[type='checkbox'] {
+      margin-left: 1rem;
+    }
   }
 }
 
