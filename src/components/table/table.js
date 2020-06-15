@@ -7,15 +7,21 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
       <table cellSpacing="0" cellPadding="0">
         <thead className="table-head">
           <tr>
-            <th className="small-cell"/>
-            <th className="med-cell">API</th>
-            <th className="large-cell">Description</th>
-            <th className="small-cell">Auth</th>
-            <th className="small-cell">CORS</th>
-            <th className="large-cell">Link</th>
-            <th className="small-cell">Category</th>
-            <th className="small-cell">Delete</th>
-            <th className="small-cell">Edit</th>
+            {[
+              ['', 'small'],
+              ['API', 'med', true],
+              ['Description', 'large', true],
+              ['Auth', 'small', true],
+              ['Cors', 'small', true],
+              ['Link', 'large', true],
+              ['Category', 'small', true],
+              ['Delete', 'small'],
+              ['Edit', 'small'],
+            ].map(([title, size, canSort], i) => (
+              <th key={i} className={`${size}-cell`}>
+                {title}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody className="table-body">
@@ -38,9 +44,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
                   ? 'yes'
                   : 'no'}
               </td>
-              <td className="large-cell">
-                {row.Link}
-              </td>
+              <td className="large-cell">{row.Link}</td>
               <td>{row.Category}</td>
               <td onClick={() => deleteRow(idx)}>click</td>
               <td onClick={() => editRow(idx)}>click</td>
