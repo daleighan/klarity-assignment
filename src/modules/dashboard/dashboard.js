@@ -64,6 +64,13 @@ function Dashboard() {
         currentShown={currentShown}
         inputForm={inputForm}
         dispatch={dispatch}
+        updateForm={updateObj =>
+          dispatch({type: 'UPDATE_FORM', data: {updateObj}})
+        }
+        addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
+        updateRow={(idx, updatedRow) =>
+          dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
+        }
       />
       <Table
         currentShown={currentShown}

@@ -9,8 +9,10 @@ function MidDash({
   selectedIdx,
   currentShown,
   inputForm,
-  dispatch,
   handleToggleInput,
+  updateForm,
+  addRow,
+  updateRow,
 }) {
   return (
     <div className="mid-dash">
@@ -64,13 +66,9 @@ function MidDash({
             formIsNew={formIsNew}
             fields={inputForm}
             selectedIdx={selectedIdx}
-            updateForm={updateObj =>
-              dispatch({type: 'UPDATE_FORM', data: {updateObj}})
-            }
-            addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
-            updateRow={(idx, updatedRow) =>
-              dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
-            }
+            updateForm={updateForm}
+            addRow={addRow}
+            updateRow={updateRow}
           />
         )}
       </div>
