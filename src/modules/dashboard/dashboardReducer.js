@@ -25,7 +25,7 @@ export default function (state, action) {
       };
     }
     case 'TOGGLE_INPUT': {
-      const {formIsNew, updateObj, shouldHide} = action.data;
+      const {formIsNew, updateObj, shouldHide, selectedIdx} = action.data;
       if (shouldHide) {
         return {
           ...state,
@@ -39,6 +39,10 @@ export default function (state, action) {
         inputForm: {
           ...updateObj,
         },
+        selectedIdx:
+          selectedIdx !== null && selectedIdx !== undefined
+            ? selectedIdx
+            : state.selectedIdx,
       };
     }
     case 'UPDATE_FORM': {
@@ -64,6 +68,15 @@ export default function (state, action) {
         showInput: selectedIdx === null && !formIsNew ? false : showInput,
       };
     }
+    case 'ADD_ROW': {
+      const {newRow} = action.data;
+      const {currentShown} = state;
+      return {
+        ...state,
+        showInput: false,
+        currentShown: [newRow, ...currentShown],
+      };
+    }
     case 'UPDATE_ROW': {
       const {idx, updatedRow} = action.data;
       const {currentShown} = state;
@@ -72,15 +85,6 @@ export default function (state, action) {
       return {
         ...state,
         currentShown: temp,
-      };
-    }
-    case 'ADD_ROW': {
-      const {newRow} = action.data;
-      const {currentShown} = state;
-      return {
-        ...state,
-        showInput: false,
-        currentShown: [newRow, ...currentShown],
       };
     }
     case 'DELETE_ROW': {

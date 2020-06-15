@@ -7,13 +7,7 @@ import Table from '../../components/table/table.js';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
-  const {
-    formIsNew,
-    showInput,
-    inputForm,
-    selectedIdx,
-    currentShown,
-  } = state;
+  const {formIsNew, showInput, inputForm, selectedIdx, currentShown} = state;
 
   useEffect(() => {
     async function fetchData() {
@@ -61,6 +55,7 @@ function Dashboard() {
                 shouldHide: showInput && !formIsNew,
                 formIsNew: false,
                 updateObj: currentShown[selectedIdx],
+                selectedIdx,
               },
             })
           }>
@@ -86,9 +81,20 @@ function Dashboard() {
       <Table
         currentShown={currentShown}
         selectedIdx={selectedIdx}
-        selectRow={selectedIdx =>
-          dispatch({type: 'SELECT_ROW', data: {selectedIdx}})
-        }
+        selectRow={(selectedIdx, openEditor) => {
+          dispatch({type: 'SELECT_ROW', data: {selectedIdx}});
+        }}
+        editRow={selectedIdx => {
+          dispatch({
+            type: 'TOGGLE_INPUT',
+            data: {
+              shouldHide: false,
+              formIsNew: false,
+              updateObj: currentShown[selectedIdx],
+              selectedIdx,
+            },
+          });
+        }}
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />
     </div>

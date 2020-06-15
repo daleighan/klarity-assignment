@@ -1,7 +1,7 @@
 import React from 'react';
 import './table.scss';
 
-function Table({currentShown, deleteRow, selectedIdx, selectRow}) {
+function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
   return currentShown.length ? (
     <div>
       <table>
@@ -16,6 +16,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow}) {
             <th>Link</th>
             <th>Category</th>
             <th>Delete</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -35,8 +36,15 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow}) {
               <td>{row.Cors}</td>
               <td>{row.Link}</td>
               <td>{row.Category}</td>
-              <td>{row.HTTPS}</td>
               <td onClick={() => deleteRow(idx)}>click</td>
+              <td
+                onClick={() =>
+                  editRow(
+                    idx,
+                  )
+                }>
+                click
+              </td>
             </tr>
           ))}
         </tbody>

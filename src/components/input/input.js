@@ -19,15 +19,20 @@ function Input({
               type="text"
               value={fields[key]}
               onChange={e => updateForm({[key]: e.target.value})}
+              placeholder={key}
             />
           ) : (
+            <div>
             <input
               type="checkbox"
               checked={fields[key]}
+              id={`field-${key}`}
               onChange={e => {
                 updateForm({[key]: e.target.checked});
               }}
             />
+                <label htmlFor={`field-${key}`}>{key}</label>
+            </div>
           )}
         </div>
       ))}
