@@ -3,6 +3,7 @@ import './dashboard.scss';
 import dashboardReducer from './dashboardReducer';
 import initialState from './initialState';
 import Header from '../../components/header/header';
+import MidDash from '../../components/mid-dash/mid-dash';
 import Input from '../../components/input/input';
 import Table from '../../components/table/table';
 
@@ -50,52 +51,20 @@ function Dashboard() {
       },
     });
   }
+
   return (
     <div className="dash-holder">
       <Header />
-      <div>
-        <button
-          className="toggle-btn"
-          onClick={() =>
-            handleToggleInput(
-              showInput && formIsNew,
-              true,
-              initialState.inputForm,
-            )
-          }>
-          Create New
-        </button>
-        {selectedIdx !== null ? (
-          <button
-            className="toggle-btn"
-            onClick={() =>
-              handleToggleInput(
-                showInput && !formIsNew,
-                false,
-                currentShown[selectedIdx],
-                selectedIdx,
-              )
-            }>
-            Edit Selected
-          </button>
-        ) : (
-          ''
-        )}
-        {state.showInput && (
-          <Input
-            formIsNew={formIsNew}
-            fields={inputForm}
-            selectedIdx={selectedIdx}
-            updateForm={updateObj =>
-              dispatch({type: 'UPDATE_FORM', data: {updateObj}})
-            }
-            addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
-            updateRow={(idx, updatedRow) =>
-              dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
-            }
-          />
-        )}
-      </div>
+      <MidDash
+        handleToggleInput={handleToggleInput}
+        showInput={showInput}
+        formIsNew={formIsNew}
+        initialState={initialState}
+        selectedIdx={selectedIdx}
+        currentShown={currentShown}
+        inputForm={inputForm}
+        dispatch={dispatch}
+      />
       <Table
         currentShown={currentShown}
         selectedIdx={selectedIdx}
