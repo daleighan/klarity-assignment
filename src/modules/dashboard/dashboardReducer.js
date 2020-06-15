@@ -6,15 +6,23 @@ export default function (state, action) {
         ...state,
         loaded: !state.loaded,
         entries,
+        entriesUsed: 50,
         currentShown: entries.slice(0, 50),
       };
     }
     case 'MORE': {
-      const {entries, currentShown} = state;
+      const {entries, entriesUsed, currentShown} = state;
+      if (currentShown.length === entries.length) {
+        return state;
+      }
       return {
         ...state,
-        currentShown: entries.slice(0, currentShown.length + 50),
-      }
+        entriesUsed: entriesUsed + 50,
+        currentShown: [
+          ...currentShown,
+          ...entries.slice(entriesUsed, entriesUsed + 50),
+        ],
+      };
     }
     case 'TOGGLE_INPUT': {
       const {formIsNew, updateObj, shouldHide} = action.data;
@@ -45,44 +53,44 @@ export default function (state, action) {
     }
     case 'SELECT_ROW': {
       const {selectedIdx} = action.data;
-      const {entries, formIsNew, showInput} = state;
+      const {currentShown, formIsNew, showInput} = state;
       return {
         ...state,
         selectedIdx,
         inputForm:
           selectedIdx !== null && !formIsNew
-            ? entries[selectedIdx]
+            ? currentShown[selectedIdx]
             : state.inputForm,
         showInput: selectedIdx === null && !formIsNew ? false : showInput,
       };
     }
     case 'UPDATE_ROW': {
       const {idx, updatedRow} = action.data;
-      const {entries} = state;
-      const temp = [...entries];
+      const {currentShown} = state;
+      const temp = [...currentShown];
       temp[idx] = updatedRow;
       return {
         ...state,
-        entries: temp,
+        currentShown: temp,
       };
     }
     case 'ADD_ROW': {
       const {newRow} = action.data;
-      const {entries} = state;
+      const {currentShown} = state;
       return {
         ...state,
         showInput: false,
-        entries: [...entries, newRow],
+        currentShown: [newRow, ...currentShown],
       };
     }
     case 'DELETE_ROW': {
       const {idx} = action.data;
-      const {entries} = state;
-      const temp = [...entries];
+      const {currentShown} = state;
+      const temp = [...currentShown];
       temp.splice(idx, 1);
       return {
         ...state,
-        entries: temp,
+        currentShown: temp,
       };
     }
     default: {

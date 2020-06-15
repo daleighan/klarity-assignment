@@ -7,7 +7,13 @@ import Table from '../../components/table/table.js';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
-  const {formIsNew, showInput, inputForm, selectedIdx, currentShown} = state;
+  const {
+    formIsNew,
+    showInput,
+    inputForm,
+    selectedIdx,
+    currentShown,
+  } = state;
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +22,9 @@ function Dashboard() {
       dispatch({type: 'ONLOAD', data: {entries}});
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
     function handleScroll(e) {
       if (
         window.innerHeight + window.scrollY >=
@@ -25,8 +34,9 @@ function Dashboard() {
       }
     }
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListner('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   return (
     <div>
       <button
@@ -40,7 +50,7 @@ function Dashboard() {
             },
           })
         }>
-        New
+        Create New
       </button>
       {selectedIdx !== null ? (
         <button
@@ -54,7 +64,7 @@ function Dashboard() {
               },
             })
           }>
-          Edit
+          Edit Selected
         </button>
       ) : (
         ''
