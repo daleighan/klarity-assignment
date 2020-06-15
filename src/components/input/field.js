@@ -2,7 +2,7 @@ import React from 'react';
 
 function Field({field, fields, updateForm}) {
   return (
-    <div>
+    <div className="field small-shadow">
       <input
         type="text"
         value={fields[field]}
