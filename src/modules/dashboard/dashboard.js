@@ -32,7 +32,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
+    <div className="dash-holder">
       <button
         onClick={() =>
           dispatch({

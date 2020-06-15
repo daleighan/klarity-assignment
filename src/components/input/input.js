@@ -12,16 +12,18 @@ function Input({
   return (
     <div>
       <div className="input-holder">
-        {Object.keys(fields).map((key, idx) => (
+        {['API', 'Description', 'Link', 'Category'].map((key, idx) => (
           <div key={idx}>
             {typeof fields[key] !== 'boolean' ? (
-              <input
-                key={idx}
-                type="text"
-                value={fields[key]}
-                onChange={e => updateForm({[key]: e.target.value})}
-                placeholder={key}
-              />
+              <div>
+                <input
+                  key={idx}
+                  type="text"
+                  value={fields[key]}
+                  onChange={e => updateForm({[key]: e.target.value})}
+                  placeholder={key}
+                />
+              </div>
             ) : (
               <div>
                 <input
@@ -38,12 +40,27 @@ function Input({
           </div>
         ))}
       </div>
-      <button
-        onClick={() =>
-          formIsNew ? addRow(fields) : updateRow(selectedIdx, fields)
-        }>
-        {formIsNew ? 'Add' : 'Update'}
-      </button>
+      <div className="input-holder">
+        {['Description', 'Cors'].map((key, idx) => (
+          <div className={key === 'Description' ? 'description' : ''}>
+            <input
+              key={idx}
+              type="text"
+              value={fields[key]}
+              onChange={e => updateForm({[key]: e.target.value})}
+              placeholder={key}
+            />
+          </div>
+        ))}
+        <div className="button-holder">
+          <button
+            onClick={() =>
+              formIsNew ? addRow(fields) : updateRow(selectedIdx, fields)
+            }>
+            {formIsNew ? 'Add' : 'Update'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

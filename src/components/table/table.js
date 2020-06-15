@@ -8,10 +8,9 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
         <thead className="table-head">
           <tr>
             <th />
-            <th>API</th>
-            <th>Description</th>
+            <th className="align-left">API</th>
+            <th className="align-left">Description</th>
             <th>Auth</th>
-            <th>HTTPS</th>
             <th>CORS</th>
             <th>Link</th>
             <th>Category</th>
@@ -29,22 +28,22 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
                   onChange={() => selectRow(idx !== selectedIdx ? idx : null)}
                 />
               </td>
-              <td>{row.API}</td>
-              <td>{row.Description}</td>
+              <td className="align-left">{row.API}</td>
+              <td className="align-left">{row.Description}</td>
               <td>{row.Auth}</td>
-              <td>{row.HTTPS ? 'yes' : 'no'}</td>
-              <td>{typeof row.Cors !== 'boolean' ? row.Cors : row.Cors ? 'yes' : 'no'}</td>
-              <td>{row.Link}</td>
+              <td>
+                {typeof row.Cors !== 'boolean'
+                  ? row.Cors
+                  : row.Cors
+                  ? 'yes'
+                  : 'no'}
+              </td>
+              <td>
+                <a href={row.Link}>here</a>
+              </td>
               <td>{row.Category}</td>
               <td onClick={() => deleteRow(idx)}>click</td>
-              <td
-                onClick={() =>
-                  editRow(
-                    idx,
-                  )
-                }>
-                click
-              </td>
+              <td onClick={() => editRow(idx)}>click</td>
             </tr>
           ))}
         </tbody>

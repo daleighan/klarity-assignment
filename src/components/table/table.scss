@@ -1,9 +1,16 @@
+.table-head th {
+  border-bottom: 1px solid black;
+}
+
 .table-body {
   tr:nth-child(even) {
     background-color: #f6f8fc;
   }
+  td {
+    padding: 1.5rem 0.5rem;
+  }
 }
 
-.table-head th {
-  border-bottom: 1px solid black;
+.align-left {
+  text-align: left;
 }

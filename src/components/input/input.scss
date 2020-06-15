@@ -1,4 +1,17 @@
 .input-holder {
   display: flex;
-  justify-content: space-between;
+}
+
+.input-holder {
+  .button-holder {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.checkbox-holder {
+  width: 15%;
+}
+
+.description {
 }
