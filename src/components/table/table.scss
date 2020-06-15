@@ -1,0 +1,9 @@
+.table-body {
+  tr:nth-child(even) {
+    background-color: #f6f8fc;
+  }
+}
+
+.table-head th {
+  border-bottom: 1px solid black;
+}

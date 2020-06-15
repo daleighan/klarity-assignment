@@ -4,8 +4,8 @@ import './table.scss';
 function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
   return currentShown.length ? (
     <div>
-      <table>
-        <thead>
+      <table cellSpacing="0" cellPadding="0">
+        <thead className="table-head">
           <tr>
             <th />
             <th>API</th>
@@ -19,7 +19,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
             <th>Edit</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-body">
           {currentShown.map((row, idx) => (
             <tr key={idx}>
               <td>
