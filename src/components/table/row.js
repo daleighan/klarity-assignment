@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Row({idx, selectedIdx, row, selectRow, deleteRow, editRow}) {
-  console.log(idx);
   return (
     <tr key={idx}>
       <td>

@@ -12,7 +12,7 @@ function Table({
   sortedBy,
   sort,
 }) {
-  return currentShown.length ? (
+  return  (
     <div className="table-holder add-shadow">
       <table cellSpacing="0" cellPadding="0">
         <TableHeader sortedBy={sortedBy} sort={sort} />
@@ -25,8 +25,6 @@ function Table({
         />
       </table>
     </div>
-  ) : (
-    <div>Loading...</div>
   );
 }
 

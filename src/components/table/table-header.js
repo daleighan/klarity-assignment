@@ -16,11 +16,11 @@ function TableHeader({sortedBy, sort}) {
   return (
     <thead className="table-head">
       <tr>
-        {columns.map(([title, size, canSort], i) => {
-          const isSelected = sortedBy === title;
+        {columns.map(([title, size, canSort], idx) => {
+          const isSelected = title === sortedBy;
           return (
             <th
-              key={i}
+              key={idx}
               className={`cell ${size}-cell ${isSelected ? 'sorted-by' : ''}`}
               onClick={() => (canSort ? sort(title) : (() => null)())}>
               {title}

@@ -1,5 +1,4 @@
 export default {
-  loaded: false,
   entries: [],
   entriesUsed: 0,
   currentShown: [],

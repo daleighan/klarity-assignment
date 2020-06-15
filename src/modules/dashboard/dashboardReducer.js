@@ -4,7 +4,6 @@ export default function (state, action) {
       const {entries} = action.data;
       return {
         ...state,
-        loaded: !state.loaded,
         entries,
         entriesUsed: 20,
         currentShown: entries.slice(0, 20),
