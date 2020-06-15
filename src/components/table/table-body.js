@@ -7,6 +7,7 @@ function TableBody({currentShown, selectedIdx, selectRow, deleteRow, editRow}) {
       {currentShown.map((row, idx) => (
         <Row
           key={idx}
+          idx={idx}
           selectedIdx={selectedIdx}
           row={row}
           selectRow={selectRow}

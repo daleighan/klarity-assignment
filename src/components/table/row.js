@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Row({idx, selectedIdx, row, selectRow, deleteRow, editRow}) {
+  console.log(idx);
   return (
     <tr key={idx}>
       <td>
@@ -22,7 +23,7 @@ function Row({idx, selectedIdx, row, selectRow, deleteRow, editRow}) {
         <button onClick={() => deleteRow(idx)}>
           <img
             className="row-icon"
-            src={`/edit_row${idx % 2 !== 0 ? '_dark' : ''}.png`}
+            src={`/edit_row${idx % 2 === 0 ? '' : '_dark'}.png`}
             alt="delete"
           />
         </button>
@@ -31,7 +32,7 @@ function Row({idx, selectedIdx, row, selectRow, deleteRow, editRow}) {
         <button onClick={() => editRow(idx)}>
           <img
             className="row-icon"
-            src={`/edit_row${idx % 2 !== 0 ? '_dark' : ''}.png`}
+            src={`/edit_row${idx % 2 === 0 ? '' : '_dark'}.png`}
             alt="edit"
           />
         </button>
