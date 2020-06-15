@@ -15,7 +15,7 @@
     padding-right: 2rem;
   }
   th {
-    border-bottom: 0.6px solid #696969;
+    border-bottom: 1.5px solid #dedede;
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
     text-align: left;
@@ -30,6 +30,7 @@
     }
   }
   .icon-cell {
+    padding-top: 1.75rem;
     width: 3rem;
   }
   .small-cell {
@@ -56,6 +57,9 @@
     input[type='checkbox'] {
       margin-left: 1rem;
     }
+  }
+  .row-icon {
+    height: 36px;
   }
 }
 

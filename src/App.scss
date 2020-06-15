@@ -11,6 +11,12 @@ body {
   justify-content: space-between;
 }
 
+.add-shadow {
+  -webkit-box-shadow: 4px 5px 5px 0px rgba(222,222,222,1), -4px -5px 5px 0px rgba(222,222,222,1);
+  -moz-box-shadow: 4px 5px 5px 0px rgba(222,222,222,1), -4px -5px 5px 0px rgba(222,222,222,1);
+  box-shadow: 4px 5px 5px 0px rgba(222,222,222,1), -4px -5px 5px 0px rgba(222,222,222,1);
+}
+
 table,
 tbody,
 thead,

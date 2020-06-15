@@ -10,9 +10,8 @@ function Table({
   sortedBy,
   sort,
 }) {
-  console.log(sortedBy);
   return currentShown.length ? (
-    <div className="table-holder">
+    <div className="table-holder add-shadow">
       <table cellSpacing="0" cellPadding="0">
         <thead className="table-head">
           <tr>
@@ -70,8 +69,12 @@ function Table({
               </td>
               <td className="large-cell">{row.Link}</td>
               <td>{row.Category}</td>
-              <td onClick={() => deleteRow(idx)}>click</td>
-              <td onClick={() => editRow(idx)}>click</td>
+              <td onClick={() => deleteRow(idx)}>
+                <img className="row-icon" src="/delete_row.png" alt="delete" />
+              </td>
+              <td onClick={() => editRow(idx)}>
+                <img className="row-icon" src="/edit_row.png" alt="edit" />
+              </td>
             </tr>
           ))}
         </tbody>
