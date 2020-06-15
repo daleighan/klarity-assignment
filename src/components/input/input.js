@@ -1,4 +1,5 @@
 import React from 'react';
+import Field from './field';
 import './input.scss';
 
 function Input({
@@ -13,30 +14,22 @@ function Input({
     <div>
       <div className="input-holder">
         {['API', 'Description', 'Category'].map((key, idx) => (
-          <div key={idx}>
-            <div>
-              <input
-                key={idx}
-                type="text"
-                value={fields[key]}
-                onChange={e => updateForm({[key]: e.target.value})}
-                placeholder={key}
-              />
-            </div>
-          </div>
+          <Field
+            key={idx}
+            field={key}
+            fields={fields}
+            updateForm={updateForm}
+          />
         ))}
       </div>
       <div className="input-holder">
         {['Link', 'Cors', 'Auth'].map((key, idx) => (
-          <div key={idx} className={key === 'Description' ? 'description' : ''}>
-            <input
-              key={idx}
-              type="text"
-              value={fields[key]}
-              onChange={e => updateForm({[key]: e.target.value})}
-              placeholder={key}
-            />
-          </div>
+          <Field
+            key={idx}
+            field={key}
+            fields={fields}
+            updateForm={updateForm}
+          />
         ))}
       </div>
       <div>
