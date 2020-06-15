@@ -31,14 +31,18 @@ function Table({
               return (
                 <th
                   key={i}
-                  className={`cell ${size}-cell ${isSelected ? 'sorted-by' : ''}`}
-                  onClick={() => sort(title)}>
+                  className={`cell ${size}-cell ${
+                    isSelected ? 'sorted-by' : ''
+                  }`}
+                  onClick={() => (canSort ? sort(title) : (() => null)())}>
                   {title}
-                  <img
-                    className="arrows"
-                    src={`/arrows_${isSelected ? 'blue' : 'grey'}.png`}
-                    alt="arrows"
-                  />
+                  {canSort && (
+                    <img
+                      className="arrows"
+                      src={`/arrows_${isSelected ? 'blue' : 'grey'}.png`}
+                      alt="arrows"
+                    />
+                  )}
                 </th>
               );
             })}
