@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #383838;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #6f6f6f;
   background-color: #f6f6f6;
 }
 
@@ -27,6 +29,11 @@ input[type='text'] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+
+input[type='checkbox'] {
+  transform: scale(1.4);
+  border: none;
 }
 
 button {

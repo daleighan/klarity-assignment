@@ -10,13 +10,13 @@ function Sidebar() {
       <div className="nav-bar add-shadow">
         <div className="nav-btns">
           {[0, 1, 2, 3, 4, 5, 6].map(num => (
-            <img
-              key={num}
-              className="menu-item"
-              src="/menu.png"
-              alt="menu-item"
-            />
+            <div key={num} className="horiz-center">
+              <img className="menu-item" src="/menu.png" alt="menu-item" />
+            </div>
           ))}
+        </div>
+        <div className="horiz-center">
+          <img className="user-image" src="/user_image.png" alt="user" />
         </div>
       </div>
     </div>
