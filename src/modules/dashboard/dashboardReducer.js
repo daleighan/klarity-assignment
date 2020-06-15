@@ -41,6 +41,8 @@ export default function (state, action) {
           return 0;
         }),
         inOrder: newInOrder,
+        showInput: false,
+        selectedIdx: null,
       };
     }
     case 'SEARCH': {
@@ -49,12 +51,14 @@ export default function (state, action) {
       const lowerCase = term.toLowerCase();
       return {
         ...state,
-        currentShown: entries.slice(0, entriesUsed).filter(
-          each =>
-            each.API.toLowerCase().includes(lowerCase) ||
-            each.Description.toLowerCase().includes(lowerCase) ||
-            each.Category.toLowerCase().includes(lowerCase),
-        ),
+        currentShown: entries
+          .slice(0, entriesUsed)
+          .filter(
+            each =>
+              each.API.toLowerCase().includes(lowerCase) ||
+              each.Description.toLowerCase().includes(lowerCase) ||
+              each.Category.toLowerCase().includes(lowerCase),
+          ),
       };
     }
     case 'TOGGLE_INPUT': {
