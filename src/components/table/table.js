@@ -69,11 +69,23 @@ function Table({
               </td>
               <td className="large-cell">{row.Link}</td>
               <td>{row.Category}</td>
-              <td onClick={() => deleteRow(idx)}>
-                <img className="row-icon" src="/delete_row.png" alt="delete" />
+              <td>
+                <button onClick={() => deleteRow(idx)}>
+                  <img
+                    className="row-icon"
+                    src={`/edit_row${idx % 2 !== 0 ? '_dark' : ''}.png`}
+                    alt="delete"
+                  />
+                </button>
               </td>
-              <td onClick={() => editRow(idx)}>
-                <img className="row-icon" src="/edit_row.png" alt="edit" />
+              <td>
+                <button onClick={() => editRow(idx)}>
+                  <img
+                    className="row-icon"
+                    src={`/edit_row${idx % 2 !== 0 ? '_dark' : ''}.png`}
+                    alt="edit"
+                  />
+                </button>
               </td>
             </tr>
           ))}

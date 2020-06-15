@@ -50,6 +50,9 @@
 .table-body {
   tr:nth-child(even) {
     background-color: #f6f8fc;
+    button {
+      background-color: #f6f8fc; 
+    }
   }
   td {
     padding-top: 1.3rem;
@@ -59,7 +62,7 @@
     }
   }
   .row-icon {
-    height: 36px;
+    height: 40px;
   }
 }
 

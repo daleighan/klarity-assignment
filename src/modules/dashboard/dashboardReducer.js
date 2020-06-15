@@ -120,6 +120,7 @@ export default function (state, action) {
             : selectedIdx > idx
             ? selectedIdx - 1
             : selectedIdx,
+        showInput: idx === selectedIdx ? false : state.showInput,
       };
     }
     default: {

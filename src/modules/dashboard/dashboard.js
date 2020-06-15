@@ -39,35 +39,42 @@ function Dashboard() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  function handleToggleInput(shouldHide, formIsNew, updateObj, selectedIdx) {
+    dispatch({
+      type: 'TOGGLE_INPUT',
+      data: {
+        shouldHide,
+        formIsNew,
+        updateObj,
+        selectedIdx,
+      },
+    });
+  }
   return (
     <div className="dash-holder">
       <Header />
       <div>
         <button
+          className="toggle-btn"
           onClick={() =>
-            dispatch({
-              type: 'TOGGLE_INPUT',
-              data: {
-                shouldHide: showInput && formIsNew,
-                formIsNew: true,
-                updateObj: initialState.inputForm,
-              },
-            })
+            handleToggleInput(
+              showInput && formIsNew,
+              true,
+              initialState.inputForm,
+            )
           }>
           Create New
         </button>
         {selectedIdx !== null ? (
           <button
+            className="toggle-btn"
             onClick={() =>
-              dispatch({
-                type: 'TOGGLE_INPUT',
-                data: {
-                  shouldHide: showInput && !formIsNew,
-                  formIsNew: false,
-                  updateObj: currentShown[selectedIdx],
-                  selectedIdx,
-                },
-              })
+              handleToggleInput(
+                showInput && !formIsNew,
+                false,
+                currentShown[selectedIdx],
+                selectedIdx,
+              )
             }>
             Edit Selected
           </button>
@@ -95,17 +102,14 @@ function Dashboard() {
         selectRow={(selectedIdx, openEditor) => {
           dispatch({type: 'SELECT_ROW', data: {selectedIdx}});
         }}
-        editRow={selectedIdx => {
-          dispatch({
-            type: 'TOGGLE_INPUT',
-            data: {
-              shouldHide: false,
-              formIsNew: false,
-              updateObj: currentShown[selectedIdx],
-              selectedIdx,
-            },
-          });
-        }}
+        editRow={selectedIdx =>
+          handleToggleInput(
+            false,
+            false,
+            currentShown[selectedIdx],
+            selectedIdx,
+          )
+        }
         sortedBy={sortedBy}
         sort={sortedBy => dispatch({type: 'SORT', data: {sortedBy}})}
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
