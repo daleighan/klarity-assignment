@@ -6,8 +6,8 @@ export default function (state, action) {
         ...state,
         loaded: !state.loaded,
         entries,
-        entriesUsed: 50,
-        currentShown: entries.slice(0, 50),
+        entriesUsed: 20,
+        currentShown: entries.slice(0, 20),
       };
     }
     case 'MORE': {
@@ -17,10 +17,10 @@ export default function (state, action) {
       }
       return {
         ...state,
-        entriesUsed: entriesUsed + 50,
+        entriesUsed: entriesUsed + 5,
         currentShown: [
           ...currentShown,
-          ...entries.slice(entriesUsed, entriesUsed + 50),
+          ...entries.slice(entriesUsed, entriesUsed + 5),
         ],
       };
     }
@@ -98,7 +98,7 @@ export default function (state, action) {
         selectedIdx:
           idx === selectedIdx
             ? null
-        : selectedIdx > idx
+            : selectedIdx > idx
             ? selectedIdx - 1
             : selectedIdx,
       };

@@ -22,7 +22,7 @@ function Dashboard() {
     function handleScroll(e) {
       if (
         window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 5
+        document.body.offsetHeight - 15
       ) {
         dispatch({type: 'MORE'});
       }

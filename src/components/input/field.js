@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Field({field, fields, updateForm}) {
-  console.log(field);
   return (
     <div>
       <input
