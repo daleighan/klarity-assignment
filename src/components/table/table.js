@@ -33,7 +33,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
               <td>{row.Description}</td>
               <td>{row.Auth}</td>
               <td>{row.HTTPS ? 'yes' : 'no'}</td>
-              <td>{row.Cors}</td>
+              <td>{typeof row.Cors !== 'boolean' ? row.Cors : row.Cors ? 'yes' : 'no'}</td>
               <td>{row.Link}</td>
               <td>{row.Category}</td>
               <td onClick={() => deleteRow(idx)}>click</td>

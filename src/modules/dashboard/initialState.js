@@ -11,7 +11,7 @@ export default {
     Description: '',
     Auth: '',
     HTTPS: false,
-    Cors: '',
+    Cors: false,
     Link: '',
     Category: '',
   },
