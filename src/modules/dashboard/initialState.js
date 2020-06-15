@@ -6,6 +6,8 @@ export default {
   showInput: false,
   formIsNew: true,
   selectedIdx: null,
+  sortedBy: 'Category',
+  inOrder: true,
   inputForm: {
     API: '',
     Description: '',

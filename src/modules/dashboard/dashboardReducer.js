@@ -22,6 +22,26 @@ export default function (state, action) {
           ...currentShown,
           ...entries.slice(entriesUsed, entriesUsed + 5),
         ],
+        sortedBy: '',
+      };
+    }
+    case 'SORT': {
+      const {sortedBy} = action.data;
+      console.log(sortedBy);
+      const newInOrder = sortedBy === state.sortedBy ? !state.inOrder : true;
+      const multiplier = newInOrder ? 1 : -1;
+      return {
+        ...state,
+        sortedBy,
+        currentShown: state.currentShown.sort((a, b) => {
+          if (a[sortedBy] < b[sortedBy]) {
+            return -1 * multiplier;
+          } else if (b[sortedBy] < a[sortedBy]) {
+            return 1 * multiplier;
+          }
+          return 0;
+        }),
+        inOrder: newInOrder,
       };
     }
     case 'TOGGLE_INPUT': {

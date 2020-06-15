@@ -8,7 +8,14 @@ import Table from '../../components/table/table';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
-  const {formIsNew, showInput, inputForm, selectedIdx, currentShown} = state;
+  const {
+    formIsNew,
+    showInput,
+    inputForm,
+    selectedIdx,
+    currentShown,
+    sortedBy,
+  } = state;
 
   useEffect(() => {
     async function fetchData() {
@@ -99,6 +106,8 @@ function Dashboard() {
             },
           });
         }}
+        sortedBy={sortedBy}
+        sort={sortedBy => dispatch({type: 'SORT', data: {sortedBy}})}
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
       />
     </div>

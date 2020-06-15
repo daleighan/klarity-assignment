@@ -1,7 +1,8 @@
 import React from 'react';
 import './table.scss';
 
-function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
+function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow, sortedBy, sort}) {
+  console.log(sortedBy);
   return currentShown.length ? (
     <div className="table-holder">
       <table cellSpacing="0" cellPadding="0">
@@ -15,10 +16,10 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
               ['Cors', 'small', true],
               ['Link', 'large', true],
               ['Category', 'small', true],
-              ['Delete', 'small'],
-              ['Edit', 'small'],
+              ['Delete', 'icon'],
+              ['Edit', 'icon'],
             ].map(([title, size, canSort], i) => (
-              <th key={i} className={`${size}-cell`}>
+              <th key={i} className={`${size}-cell ${sortedBy === title ? 'sorted-by' : ''}`} onClick={() => sort(title)}>
                 {title}
               </th>
             ))}
