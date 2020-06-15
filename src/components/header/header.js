@@ -16,9 +16,14 @@ function Header({search}) {
       </div>
       <div className="search">
         <div>
-            <img src="/search.png" alt="" className="search-image" />
+          <img src="/search.png" alt="" className="search-image" />
           <span>
-            <input onChange={(e) => search(e.target.value)}type="text" placeholder="Search..." />
+            <input
+              onChange={e => search(e.target.value)}
+              className="search-box"
+              type="text"
+              placeholder="Search..."
+            />
           </span>
         </div>
       </div>
