@@ -24,7 +24,7 @@ export default function (state, action) {
       return {
         ...state,
         showInput: false,
-      }
+      };
     }
     case 'UPDATE_FORM': {
       const {updateObj} = action.data;
@@ -56,7 +56,6 @@ export default function (state, action) {
       temp[idx] = updatedRow;
       return {
         ...state,
-        showInput: false,
         entries: temp,
       };
     }
@@ -80,7 +79,7 @@ export default function (state, action) {
       };
     }
     default: {
-      return {...state};
+      return state;
     }
   }
 }

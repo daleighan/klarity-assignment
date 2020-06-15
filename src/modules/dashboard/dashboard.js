@@ -18,34 +18,33 @@ function Dashboard() {
   }, []);
 
   const {formIsNew, showInput, inputForm, selectedIdx, entries} = state;
+
+  function handleInputShow(isCurrentSelected, nextIsNew, updateObj) {
+    if (isCurrentSelected) {
+      dispatch({type: 'HIDE_INPUT'});
+    } else {
+      dispatch({
+        type: 'SHOW_INPUT',
+        data: {
+          formIsNew: nextIsNew,
+          updateObj: updateObj,
+        },
+      });
+    }
+  }
+
   return (
     <div>
       <button
         onClick={() =>
-          !(showInput && formIsNew)
-            ? dispatch({
-                type: 'SHOW_INPUT',
-                data: {
-                  formIsNew: true,
-                  updateObj: initialState.inputForm,
-                },
-              })
-            : dispatch({type: 'HIDE_INPUT'})
+          handleInputShow(showInput && formIsNew, true, initialState.inputForm)
         }>
         New
       </button>
       {selectedIdx !== null ? (
         <button
           onClick={() =>
-            !(showInput && !formIsNew)
-              ? dispatch({
-                  type: 'SHOW_INPUT',
-                  data: {
-                    formIsNew: false,
-                    updateObj: entries[selectedIdx],
-                  },
-                })
-              : dispatch({type: 'HIDE_INPUT'})
+            handleInputShow(showInput && !formIsNew, false, entries[selectedIdx])
           }>
           Edit
         </button>
