@@ -1,8 +1,8 @@
 import React from 'react';
 import './table.scss';
 
-function Table({entries, deleteRow, selectedIdx, selectRow}) {
-  return entries.length ? (
+function Table({currentShown, deleteRow, selectedIdx, selectRow}) {
+  return currentShown.length ? (
     <div>
       <table>
         <thead>
@@ -19,7 +19,7 @@ function Table({entries, deleteRow, selectedIdx, selectRow}) {
           </tr>
         </thead>
         <tbody>
-          {entries.map((row, idx) => (
+          {currentShown.map((row, idx) => (
             <tr key={idx}>
               <td>
                 <input

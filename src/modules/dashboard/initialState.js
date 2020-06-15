@@ -1,6 +1,8 @@
 export default {
   loaded: false,
   entries: [],
+  currentShown: [],
+  currentHeight: 0,
   showInput: false,
   formIsNew: true,
   selectedIdx: null,

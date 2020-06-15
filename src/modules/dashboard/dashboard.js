@@ -7,18 +7,26 @@ import Table from '../../components/table/table.js';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
+  const {formIsNew, showInput, inputForm, selectedIdx, currentShown} = state;
 
   useEffect(() => {
     async function fetchData() {
       const res = await fetch('https://api.publicapis.org/entries');
       const {entries} = await res.json();
-      dispatch({type: 'ONLOAD', data: {entries: entries.slice(0, 10)}});
+      dispatch({type: 'ONLOAD', data: {entries}});
     }
     fetchData();
+    function handleScroll(e) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 5
+      ) {
+        dispatch({type: 'MORE'});
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListner('scroll', handleScroll);
   }, []);
-
-  const {formIsNew, showInput, inputForm, selectedIdx, entries} = state;
-
   return (
     <div>
       <button
@@ -42,7 +50,7 @@ function Dashboard() {
               data: {
                 shouldHide: showInput && !formIsNew,
                 formIsNew: false,
-                updateObj: entries[selectedIdx],
+                updateObj: currentShown[selectedIdx],
               },
             })
           }>
@@ -66,7 +74,7 @@ function Dashboard() {
         />
       )}
       <Table
-        entries={entries}
+        currentShown={currentShown}
         selectedIdx={selectedIdx}
         selectRow={selectedIdx =>
           dispatch({type: 'SELECT_ROW', data: {selectedIdx}})

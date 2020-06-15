@@ -6,7 +6,15 @@ export default function (state, action) {
         ...state,
         loaded: !state.loaded,
         entries,
+        currentShown: entries.slice(0, 50),
       };
+    }
+    case 'MORE': {
+      const {entries, currentShown} = state;
+      return {
+        ...state,
+        currentShown: entries.slice(0, currentShown.length + 50),
+      }
     }
     case 'TOGGLE_INPUT': {
       const {formIsNew, updateObj, shouldHide} = action.data;
