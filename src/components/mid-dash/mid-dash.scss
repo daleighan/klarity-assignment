@@ -1,0 +1,14 @@
+.mid-dash {
+  margin-bottom: 2rem;
+  .toggle-btn {
+    border-radius: 5px;
+    margin-right: 0.75rem;
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+  .toggle-btn:active {
+    box-shadow: none;
+  }
+}

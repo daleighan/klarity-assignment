@@ -4,7 +4,6 @@ import dashboardReducer from './dashboardReducer';
 import initialState from './initialState';
 import Header from '../../components/header/header';
 import MidDash from '../../components/mid-dash/mid-dash';
-import Input from '../../components/input/input';
 import Table from '../../components/table/table';
 
 function Dashboard() {

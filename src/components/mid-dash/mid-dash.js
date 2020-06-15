@@ -10,24 +10,13 @@ function MidDash({
   currentShown,
   inputForm,
   dispatch,
+  handleToggleInput,
 }) {
-  function handleToggleInput(shouldHide, formIsNew, updateObj, selectedIdx) {
-    dispatch({
-      type: 'TOGGLE_INPUT',
-      data: {
-        shouldHide,
-        formIsNew,
-        updateObj,
-        selectedIdx,
-      },
-    });
-  }
-
   return (
-    <div>
+    <div className="mid-dash">
       <div>
         <button
-          className="toggle-btn add-shadow"
+          className="toggle-btn small-shadow"
           onClick={() =>
             handleToggleInput(
               showInput && formIsNew,
@@ -39,7 +28,7 @@ function MidDash({
         </button>
         {selectedIdx !== null ? (
           <button
-            className="toggle-btn add-shadow"
+            className="toggle-btn small-shadow"
             onClick={() =>
               handleToggleInput(
                 showInput && !formIsNew,
