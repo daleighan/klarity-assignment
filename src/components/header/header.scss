@@ -8,11 +8,11 @@
 
 .title,
 .search {
-  font-size: 0.95rem;
   border-radius: 7px;
 }
 
 .titles {
+  font-size: 0.95rem;
   color: #1e647b;
   width: 50%;
   background-color: #deefff;
@@ -36,8 +36,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 0.5rem;
   input {
-    padding-left: 1rem;
     color: #6f6f6f;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  .search-image {
+    height: 28px;
+    width: 28px;
+    vertical-align: text-bottom;
   }
 }

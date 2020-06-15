@@ -15,7 +15,12 @@ function Header() {
         </div>
       </div>
       <div className="search">
-        <input type="text" placeholder="search"/>
+        <div>
+            <img src="/search.png" alt="" className="search-image" />
+          <span>
+            <input type="text" placeholder="search" />
+          </span>
+        </div>
       </div>
     </div>
   );
