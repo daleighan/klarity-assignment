@@ -20,6 +20,12 @@ export default function (state, action) {
         },
       };
     }
+    case 'HIDE_INPUT': {
+      return {
+        ...state,
+        showInput: false,
+      }
+    }
     case 'UPDATE_FORM': {
       const {updateObj} = action.data;
       return {

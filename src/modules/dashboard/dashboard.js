@@ -17,29 +17,35 @@ function Dashboard() {
     fetchData();
   }, []);
 
-  const {formIsNew, inputForm, selectedIdx, entries} = state;
-
+  const {formIsNew, showInput, inputForm, selectedIdx, entries} = state;
   return (
     <div>
       <button
-        onClick={() => {
-          dispatch({
-            type: 'SHOW_INPUT',
-            data: {
-              formIsNew: true,
-              updateObj: initialState.inputForm,
-            },
-          });
-        }}>
+        onClick={() =>
+          !(showInput && formIsNew)
+            ? dispatch({
+                type: 'SHOW_INPUT',
+                data: {
+                  formIsNew: true,
+                  updateObj: initialState.inputForm,
+                },
+              })
+            : dispatch({type: 'HIDE_INPUT'})
+        }>
         New
       </button>
       {selectedIdx !== null ? (
         <button
           onClick={() =>
-            dispatch({
-              type: 'SHOW_INPUT',
-              data: {formIsNew: false, updateObj: entries[selectedIdx]},
-            })
+            !(showInput && !formIsNew)
+              ? dispatch({
+                  type: 'SHOW_INPUT',
+                  data: {
+                    formIsNew: false,
+                    updateObj: entries[selectedIdx],
+                  },
+                })
+              : dispatch({type: 'HIDE_INPUT'})
           }>
           Edit
         </button>
@@ -63,7 +69,7 @@ function Dashboard() {
       <Table
         entries={entries}
         selectedIdx={selectedIdx}
-        selectRow={(selectedIdx) =>
+        selectRow={selectedIdx =>
           dispatch({type: 'SELECT_ROW', data: {selectedIdx}})
         }
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}

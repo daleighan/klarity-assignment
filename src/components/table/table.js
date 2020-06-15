@@ -1,12 +1,7 @@
 import React from 'react';
 import './table.scss';
 
-function Table({
-  entries,
-  deleteRow,
-  selectedIdx,
-  selectRow,
-}) {
+function Table({entries, deleteRow, selectedIdx, selectRow}) {
   return entries.length ? (
     <div>
       <table>
@@ -30,9 +25,7 @@ function Table({
                 <input
                   type="checkbox"
                   checked={idx === selectedIdx}
-                  onChange={() =>
-                    selectRow(idx !== selectedIdx ? idx : null)
-                  }
+                  onChange={() => selectRow(idx !== selectedIdx ? idx : null)}
                 />
               </td>
               <td>{row.API}</td>
