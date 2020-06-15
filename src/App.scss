@@ -29,6 +29,11 @@ input[type='text'] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  color: #0098c6;
+}
+
+input[type='text']:focus {
+  color: #0098c6;
 }
 
 input[type='checkbox'] {
