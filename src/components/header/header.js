@@ -4,13 +4,16 @@ import './header.scss';
 function Header() {
   return (
     <div className="header-outer">
-      {/*<div>
-        <img src="/logo.png" className="logo" alt="logo" />
-      </div>*/}
-        <div className="titles">
-          <div>School: <b>New Westeros Elementary</b></div>
-            <div>Site Coordinator: <b>Debra Graham</b></div>
+      <div className="titles">
+        <div>
+          <img src="/school.png" alt="school" className="title-image" />
+          School: <b>New Westeros Elementary</b>
         </div>
+        <div>
+          <img src="/school.png" alt="school" className="title-image" />
+          Site Coordinator: <b>Debra Graham</b>
+        </div>
+      </div>
     </div>
   );
 }

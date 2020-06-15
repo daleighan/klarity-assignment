@@ -1,18 +1,24 @@
 .header-outer {
-  margin-bottom: 2rem;
+  margin: 3.1rem 0;
   display: flex;
 }
 
-.logo {
-  margin-top: 1rem;
-  width: 100px;
-}
-
 .titles {
-  padding-right: 3rem;
+  color: #1e647b;
+  border-radius: 7px;
   width: 50%;
   background-color: #deefff;
   padding: 0.7rem;
   display: flex;
   justify-content: space-between;
+  font-size: 0.95rem;
+  div {
+    margin-right: 2rem;
+    padding-bottom: 0.2rem;
+  }
+  .title-image {
+    height: 25px;
+    vertical-align: text-bottom;
+    margin-right: 0.2rem;
+  }
 }
