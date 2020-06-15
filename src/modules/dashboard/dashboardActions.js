@@ -5,7 +5,6 @@ export const handleToggleInput = function (
   updateObj,
   selectedIdx,
 ) {
-  console.log(dispatch);
   dispatch({
     type: 'TOGGLE_INPUT',
     data: {
