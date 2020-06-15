@@ -3,7 +3,7 @@ import './table.scss';
 
 function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
   return currentShown.length ? (
-    <div>
+    <div className="table-holder">
       <table cellSpacing="0" cellPadding="0">
         <thead className="table-head">
           <tr>
@@ -12,7 +12,7 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
             <th className="align-left">Description</th>
             <th>Auth</th>
             <th>CORS</th>
-            <th>Link</th>
+            <th className="align-left">Link</th>
             <th>Category</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -38,8 +38,8 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow}) {
                   ? 'yes'
                   : 'no'}
               </td>
-              <td>
-                <a href={row.Link}>here</a>
+              <td className="align-left">
+                {row.Link}
               </td>
               <td>{row.Category}</td>
               <td onClick={() => deleteRow(idx)}>click</td>

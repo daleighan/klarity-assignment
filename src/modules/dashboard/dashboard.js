@@ -2,8 +2,9 @@ import React, {useEffect, useReducer} from 'react';
 import './dashboard.scss';
 import dashboardReducer from './dashboardReducer';
 import initialState from './initialState';
-import Input from '../../components/input/input.js';
-import Table from '../../components/table/table.js';
+import Header from '../../components/header/header';
+import Input from '../../components/input/input';
+import Table from '../../components/table/table';
 
 function Dashboard() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
@@ -33,51 +34,54 @@ function Dashboard() {
 
   return (
     <div className="dash-holder">
-      <button
-        onClick={() =>
-          dispatch({
-            type: 'TOGGLE_INPUT',
-            data: {
-              shouldHide: showInput && formIsNew,
-              formIsNew: true,
-              updateObj: initialState.inputForm,
-            },
-          })
-        }>
-        Create New
-      </button>
-      {selectedIdx !== null ? (
+      <Header />
+      <div>
         <button
           onClick={() =>
             dispatch({
               type: 'TOGGLE_INPUT',
               data: {
-                shouldHide: showInput && !formIsNew,
-                formIsNew: false,
-                updateObj: currentShown[selectedIdx],
-                selectedIdx,
+                shouldHide: showInput && formIsNew,
+                formIsNew: true,
+                updateObj: initialState.inputForm,
               },
             })
           }>
-          Edit Selected
+          Create New
         </button>
-      ) : (
-        ''
-      )}
-      {state.showInput && (
-        <Input
-          formIsNew={formIsNew}
-          fields={inputForm}
-          selectedIdx={selectedIdx}
-          updateForm={updateObj =>
-            dispatch({type: 'UPDATE_FORM', data: {updateObj}})
-          }
-          addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
-          updateRow={(idx, updatedRow) =>
-            dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
-          }
-        />
-      )}
+        {selectedIdx !== null ? (
+          <button
+            onClick={() =>
+              dispatch({
+                type: 'TOGGLE_INPUT',
+                data: {
+                  shouldHide: showInput && !formIsNew,
+                  formIsNew: false,
+                  updateObj: currentShown[selectedIdx],
+                  selectedIdx,
+                },
+              })
+            }>
+            Edit Selected
+          </button>
+        ) : (
+          ''
+        )}
+        {state.showInput && (
+          <Input
+            formIsNew={formIsNew}
+            fields={inputForm}
+            selectedIdx={selectedIdx}
+            updateForm={updateObj =>
+              dispatch({type: 'UPDATE_FORM', data: {updateObj}})
+            }
+            addRow={newRow => dispatch({type: 'ADD_ROW', data: {newRow}})}
+            updateRow={(idx, updatedRow) =>
+              dispatch({type: 'UPDATE_ROW', data: {idx, updatedRow}})
+            }
+          />
+        )}
+      </div>
       <Table
         currentShown={currentShown}
         selectedIdx={selectedIdx}
