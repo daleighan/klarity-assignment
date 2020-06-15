@@ -89,12 +89,18 @@ export default function (state, action) {
     }
     case 'DELETE_ROW': {
       const {idx} = action.data;
-      const {currentShown} = state;
+      const {currentShown, selectedIdx} = state;
       const temp = [...currentShown];
       temp.splice(idx, 1);
       return {
         ...state,
         currentShown: temp,
+        selectedIdx:
+          idx === selectedIdx
+            ? null
+        : selectedIdx > idx
+            ? selectedIdx - 1
+            : selectedIdx,
       };
     }
     default: {
