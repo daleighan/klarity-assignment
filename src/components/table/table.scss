@@ -3,6 +3,8 @@
   background-color: #ffffff;
   border-radius: 7px;
   table {
+    word-wrap: break-word;
+    table-layout: fixed;
     width: 100%;
   }
 }

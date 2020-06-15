@@ -10,9 +10,12 @@ function Header() {
           School: <b>New Westeros Elementary</b>
         </div>
         <div>
-          <img src="/school.png" alt="school" className="title-image" />
+          <img src="/people.png" alt="people" className="title-image" />
           Site Coordinator: <b>Debra Graham</b>
         </div>
+      </div>
+      <div className="search">
+        <input type="text" placeholder="search"/>
       </div>
     </div>
   );

@@ -1,17 +1,24 @@
 .header-outer {
   margin: 3.1rem 0;
   display: flex;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 2.5rem;
+}
+
+.title,
+.search {
+  font-size: 0.95rem;
+  border-radius: 7px;
 }
 
 .titles {
   color: #1e647b;
-  border-radius: 7px;
   width: 50%;
   background-color: #deefff;
   padding: 0.7rem;
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
   div {
     margin-right: 2rem;
     padding-bottom: 0.2rem;
@@ -20,5 +27,17 @@
     height: 25px;
     vertical-align: text-bottom;
     margin-right: 0.2rem;
+  }
+}
+
+.search {
+  background-color: #e0e0e0;
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  input {
+    padding-left: 1rem;
+    color: #6f6f6f;
   }
 }
