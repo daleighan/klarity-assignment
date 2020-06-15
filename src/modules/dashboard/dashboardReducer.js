@@ -27,7 +27,6 @@ export default function (state, action) {
     }
     case 'SORT': {
       const {sortedBy} = action.data;
-      console.log(sortedBy);
       const newInOrder = sortedBy === state.sortedBy ? !state.inOrder : true;
       const multiplier = newInOrder ? 1 : -1;
       return {

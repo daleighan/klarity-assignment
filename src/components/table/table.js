@@ -1,7 +1,15 @@
 import React from 'react';
 import './table.scss';
 
-function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow, sortedBy, sort}) {
+function Table({
+  currentShown,
+  deleteRow,
+  selectedIdx,
+  selectRow,
+  editRow,
+  sortedBy,
+  sort,
+}) {
   console.log(sortedBy);
   return currentShown.length ? (
     <div className="table-holder">
@@ -18,11 +26,22 @@ function Table({currentShown, deleteRow, selectedIdx, selectRow, editRow, sorted
               ['Category', 'small', true],
               ['Delete', 'icon'],
               ['Edit', 'icon'],
-            ].map(([title, size, canSort], i) => (
-              <th key={i} className={`${size}-cell ${sortedBy === title ? 'sorted-by' : ''}`} onClick={() => sort(title)}>
-                {title}
-              </th>
-            ))}
+            ].map(([title, size, canSort], i) => {
+              const isSelected = sortedBy === title;
+              return (
+                <th
+                  key={i}
+                  className={`cell ${size}-cell ${isSelected ? 'sorted-by' : ''}`}
+                  onClick={() => sort(title)}>
+                  {title}
+                  <img
+                    className="arrows"
+                    src={`/arrows_${isSelected ? 'blue' : 'grey'}.png`}
+                    alt="arrows"
+                  />
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody className="table-body">

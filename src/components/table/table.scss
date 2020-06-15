@@ -20,8 +20,17 @@
     padding-bottom: 1.3rem;
     text-align: left;
   }
+  .arrows {
+    height: 22px;
+  }
+  .cell {
+    img {
+      vertical-align: text-bottom;
+      margin-left: 0.3rem;
+    }
+  }
   .icon-cell {
-    width: 1.5rem;
+    width: 2rem;
   }
   .small-cell {
     width: 3rem;
