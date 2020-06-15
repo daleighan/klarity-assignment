@@ -1,7 +1,14 @@
 import React from 'react';
 import Row from './row';
 
-function TableBody({currentShown, selectedIdx, selectRow, deleteRow, editRow}) {
+function TableBody({
+  currentShown,
+  selectedIdx,
+  selectRow,
+  deleteRow,
+  editRow,
+  loaded,
+}) {
   return (
     <tbody className="table-body">
       {currentShown.length ? (
@@ -18,7 +25,9 @@ function TableBody({currentShown, selectedIdx, selectRow, deleteRow, editRow}) {
         ))
       ) : (
         <tr>
-          <td colSpan="9" className="text-center">Loading...</td>
+          <td colSpan="9" className="text-center">
+            {!loaded ? 'Loading...' : 'No Search Results'}
+          </td>
         </tr>
       )}
     </tbody>

@@ -3,6 +3,7 @@ export default {
   entriesUsed: 0,
   currentShown: [],
   showInput: false,
+  loaded: false,
   formIsNew: true,
   selectedIdx: null,
   sortedBy: 'Category',

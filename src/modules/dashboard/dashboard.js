@@ -15,6 +15,7 @@ function Dashboard() {
     selectedIdx,
     currentShown,
     sortedBy,
+    loaded,
   } = state;
 
   useEffect(() => {
@@ -30,7 +31,7 @@ function Dashboard() {
     function handleScroll(e) {
       if (
         window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 15
+        document.body.offsetHeight - 50
       ) {
         dispatch({type: 'MORE'});
       }
@@ -53,7 +54,7 @@ function Dashboard() {
 
   return (
     <div className="dash-holder">
-      <Header />
+      <Header search={term => dispatch({type: 'SEARCH', data: {term}})} />
       <MidDash
         handleToggleInput={handleToggleInput}
         showInput={showInput}
@@ -81,6 +82,7 @@ function Dashboard() {
         sortedBy={sortedBy}
         sort={sortedBy => dispatch({type: 'SORT', data: {sortedBy}})}
         deleteRow={idx => dispatch({type: 'DELETE_ROW', data: {idx}})}
+        loaded={loaded}
       />
     </div>
   );

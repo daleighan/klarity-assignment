@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 
-function Header() {
+function Header({search}) {
   return (
     <div className="header-outer">
       <div className="titles">
@@ -18,7 +18,7 @@ function Header() {
         <div>
             <img src="/search.png" alt="" className="search-image" />
           <span>
-            <input type="text" placeholder="Search..." />
+            <input onChange={(e) => search(e.target.value)}type="text" placeholder="Search..." />
           </span>
         </div>
       </div>

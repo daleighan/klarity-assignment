@@ -7,6 +7,7 @@ export default function (state, action) {
         entries,
         entriesUsed: 20,
         currentShown: entries.slice(0, 20),
+        loaded: true,
       };
     }
     case 'MORE': {
@@ -16,10 +17,10 @@ export default function (state, action) {
       }
       return {
         ...state,
-        entriesUsed: entriesUsed + 5,
+        entriesUsed: entriesUsed + 7,
         currentShown: [
           ...currentShown,
-          ...entries.slice(entriesUsed, entriesUsed + 5),
+          ...entries.slice(entriesUsed, entriesUsed + 7),
         ],
         sortedBy: '',
       };
@@ -40,6 +41,20 @@ export default function (state, action) {
           return 0;
         }),
         inOrder: newInOrder,
+      };
+    }
+    case 'SEARCH': {
+      const {term} = action.data;
+      const {entries, entriesUsed} = state;
+      const lowerCase = term.toLowerCase();
+      return {
+        ...state,
+        currentShown: entries.slice(0, entriesUsed).filter(
+          each =>
+            each.API.toLowerCase().includes(lowerCase) ||
+            each.Description.toLowerCase().includes(lowerCase) ||
+            each.Category.toLowerCase().includes(lowerCase),
+        ),
       };
     }
     case 'TOGGLE_INPUT': {

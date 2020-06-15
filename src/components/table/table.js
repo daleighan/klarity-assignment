@@ -11,6 +11,7 @@ function Table({
   editRow,
   sortedBy,
   sort,
+  loaded,
 }) {
   return  (
     <div className="table-holder add-shadow">
@@ -22,6 +23,7 @@ function Table({
           selectRow={selectRow}
           deleteRow={deleteRow}
           editRow={editRow}
+          loaded={loaded}
         />
       </table>
     </div>
