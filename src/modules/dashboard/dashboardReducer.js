@@ -8,22 +8,21 @@ export default function (state, action) {
         entries,
       };
     }
-    case 'SHOW_INPUT': {
-      const {formIsNew, updateObj, selectedIdx} = action.data;
+    case 'TOGGLE_INPUT': {
+      const {formIsNew, updateObj, shouldHide} = action.data;
+      if (shouldHide) {
+        return {
+          ...state,
+          showInput: false,
+        };
+      }
       return {
         ...state,
         formIsNew,
         showInput: true,
-        selectedIdx: selectedIdx || state.selectedIdx,
         inputForm: {
           ...updateObj,
         },
-      };
-    }
-    case 'HIDE_INPUT': {
-      return {
-        ...state,
-        showInput: false,
       };
     }
     case 'UPDATE_FORM': {

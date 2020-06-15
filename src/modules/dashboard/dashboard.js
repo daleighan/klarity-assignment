@@ -19,32 +19,32 @@ function Dashboard() {
 
   const {formIsNew, showInput, inputForm, selectedIdx, entries} = state;
 
-  function handleInputShow(isCurrentSelected, nextIsNew, updateObj) {
-    if (isCurrentSelected) {
-      dispatch({type: 'HIDE_INPUT'});
-    } else {
-      dispatch({
-        type: 'SHOW_INPUT',
-        data: {
-          formIsNew: nextIsNew,
-          updateObj: updateObj,
-        },
-      });
-    }
-  }
-
   return (
     <div>
       <button
         onClick={() =>
-          handleInputShow(showInput && formIsNew, true, initialState.inputForm)
+          dispatch({
+            type: 'TOGGLE_INPUT',
+            data: {
+              shouldHide: showInput && formIsNew,
+              formIsNew: true,
+              updateObj: initialState.inputForm,
+            },
+          })
         }>
         New
       </button>
       {selectedIdx !== null ? (
         <button
           onClick={() =>
-            handleInputShow(showInput && !formIsNew, false, entries[selectedIdx])
+            dispatch({
+              type: 'TOGGLE_INPUT',
+              data: {
+                shouldHide: showInput && !formIsNew,
+                formIsNew: false,
+                updateObj: entries[selectedIdx],
+              },
+            })
           }>
           Edit
         </button>
